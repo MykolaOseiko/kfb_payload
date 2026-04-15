@@ -14,6 +14,8 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3001',
+
   admin: {
     user: Users.slug,
     importMap: {
@@ -55,12 +57,16 @@ export default buildConfig({
 
   // Allow the main site to fetch from this API
   cors: [
+    'https://payload.kfbooks.eu',
     'https://kfbooks.eu',
     'http://localhost:3000',
+    'http://localhost:3001',
   ],
 
   csrf: [
+    'https://payload.kfbooks.eu',
     'https://kfbooks.eu',
     'http://localhost:3000',
+    'http://localhost:3001',
   ],
 })
