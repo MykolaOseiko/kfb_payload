@@ -9,10 +9,7 @@ export const Users: CollectionConfig = {
   access: {
     read: ({ req: { user } }) => !!user,
     create: ({ req: { user } }) => !!user,
-    update: ({ req: { user }, id }) => {
-      if (!user) return false
-      return user.id === id || user.collection === 'users'
-    },
+    update: ({ req: { user } }) => !!user,
     delete: ({ req: { user } }) => !!user,
   },
   fields: [
