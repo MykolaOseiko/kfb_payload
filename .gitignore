@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js
+.next/
+out/
+
+# production
+build/
+
+# env — never commit secrets
+.env.local
+.env.*.local
+
+# Payload generated
+src/payload-types.ts
+
+# uploads
+public/media/*
+!public/media/.gitkeep
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*
