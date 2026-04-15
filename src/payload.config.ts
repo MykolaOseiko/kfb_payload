@@ -4,11 +4,11 @@ import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 
-import { Posts } from './collections/Posts'
-import { Categories } from './collections/Categories'
-import { Media } from './collections/Media'
-import { EmailTemplates } from './collections/EmailTemplates'
-import { Users } from './collections/Users'
+import { Posts } from './collections/Posts.js'
+import { Categories } from './collections/Categories.js'
+import { Media } from './collections/Media.js'
+import { EmailTemplates } from './collections/EmailTemplates.js'
+import { Users } from './collections/Users.js'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
