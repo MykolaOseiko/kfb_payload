@@ -24,10 +24,10 @@ const {
 } = process.env
 
 const CATEGORIES = [
-  { title: 'Rights & AI' },
-  { title: 'Marketing & Promotion' },
-  { title: 'Platforms & Sales' },
-  { title: 'Craft & Career' },
+  { name: 'Rights & AI',          slug: 'rights-and-ai' },
+  { name: 'Marketing & Promotion', slug: 'marketing-and-promotion' },
+  { name: 'Platforms & Sales',    slug: 'platforms-and-sales' },
+  { name: 'Craft & Career',       slug: 'craft-and-career' },
 ]
 
 async function getToken() {
@@ -53,7 +53,7 @@ async function main() {
     })
     const data = await res.json()
     if (res.ok) {
-      console.log(`✅ Created: "${data.doc.title}" → ID ${data.doc.id}`)
+      console.log(`✅ Created: "${data.doc.name}" → ID ${data.doc.id}`)
     } else {
       console.log(`❌ Failed "${cat.title}": ${JSON.stringify(data.errors || data)}`)
     }
