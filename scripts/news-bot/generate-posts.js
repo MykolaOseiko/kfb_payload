@@ -27,8 +27,8 @@ try {
 const { ANTHROPIC_API_KEY } = process.env
 
 // ── Paths ─────────────────────────────────────────────────────────────────────
-const SOURCES_DIR = resolve(__dirname, '../../../_KFB_site/blog')
-const OUTPUT_DIR  = resolve(SOURCES_DIR, 'generated')
+const SOURCES_DIR = resolve(__dirname, 'blog')
+const OUTPUT_DIR  = resolve(__dirname, 'generated')
 
 // ── Post list (44 approved posts, audio removed) ─────────────────────────────
 const POSTS = [
