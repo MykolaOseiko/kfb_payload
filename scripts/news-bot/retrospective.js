@@ -52,12 +52,6 @@ function formatMonth(date) {
   return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
 }
 
-function toSlug(title) {
-  return title.toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .slice(0, 60) + '-' + date.getTime()
-}
 
 function weekRangeLabel(date) {
   const end = new Date(date)

@@ -1,13 +1,16 @@
 {
   "name": "kfb-news-bot",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "bot": "node news-bot.js",
-    "retro": "node retrospective.js"
+    "retro":    "node retrospective-v2.js",
+    "roundup":  "node monthly-roundup.js",
+    "evergreen":"node evergreen.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
+    "@mozilla/readability": "^0.5.0",
+    "jsdom": "^25.0.0",
     "rss-parser": "^3.13.0"
   }
 }
