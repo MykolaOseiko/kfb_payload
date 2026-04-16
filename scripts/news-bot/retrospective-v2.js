@@ -41,11 +41,14 @@ const END   = new Date('2025-06-30')
 
 const DELAY_MS = 6000 // between months (Wayback Machine rate limit)
 
+// Try both www and non-www variants
 const SOURCES = [
-  'janefriedman.com',
+  'www.janefriedman.com',
   'davidgaughran.com',
-  'allianceindependentauthors.org',
-  'thecreativepenn.com',
+  'www.allianceindependentauthors.org',
+  'www.thecreativepenn.com',
+  'blog.reedsy.com',
+  'www.writtenwordmedia.com',
 ]
 
 // ── Utilities ────────────────────────────────────────────────────────────────
@@ -179,23 +182,24 @@ async function generatePost(sources, label) {
       role: 'user',
       content: `You are a content editor at KF Books — a platform for indie authors.
 
-Below are excerpts from ${sources.length} real articles published in ${label}.
+Below are excerpts from ${sources.length} real article(s) published in ${label}.
 
 ${sourcesBlock}
 
-Write an ORIGINAL monthly roundup for indie authors. Requirements:
-- Ground every claim in specifics from the sources (names, platforms, figures, events)
+Write an ORIGINAL monthly roundup for indie authors covering ${label}. Requirements:
+- Extract every specific fact, name, platform, figure, or event from the sources — these are your anchors
+- Use your knowledge of the indie publishing industry to fill context around those anchors
 - Maximum 20% of any single source used directly — everything else in your own voice
-- Each paragraph covers a distinct angle: one per domain (platforms, earnings, marketing, rights/legal, reader discovery)
-- Editorial and direct — not an aggregator summary
+- Each paragraph covers a distinct angle (platforms, earnings/royalties, marketing, AI/rights, reader discovery)
+- Editorial voice — opinionated and direct, not a bland news summary
 - No generic openers ("This month saw…", "It's been a busy…", "The indie publishing world…")
-- Final paragraph: one concrete, actionable takeaway tied to what actually happened this month
-- 380–420 words total, 4–5 paragraphs
+- Final paragraph: one concrete, actionable takeaway tied to this specific period
+- 380–420 words, 4–5 paragraphs
 
 Return ONLY valid JSON (no markdown, no code fences):
 {
   "title": "specific headline for ${label} — max 12 words",
-  "excerpt": "one sharp sentence, max 25 words",
+  "excerpt": "one sharp sentence capturing the key theme, max 25 words",
   "body": "4-5 paragraphs separated by \\n\\n"
 }`,
     }],
@@ -233,8 +237,8 @@ async function main() {
     const sources = results.filter(Boolean)
     console.log(`→ ${sources.length}/${SOURCES.length} retrieved`)
 
-    if (sources.length < 2) {
-      console.log('  ⚠️  Not enough sources — skipping\n')
+    if (sources.length === 0) {
+      console.log('  ⚠️  No sources found — skipping\n')
       failed++
       await sleep(DELAY_MS)
       continue
